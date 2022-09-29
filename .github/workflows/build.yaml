@@ -21,6 +21,14 @@ jobs:
         with:
           command: build
           args: --release --all-features
+      - name: Delete release if it exists
+        uses: dev-drprasad/delete-tag-and-release@v0.2.0
+        continue-on-error: true
+        with:
+          delete_release: true
+          tag_name: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
