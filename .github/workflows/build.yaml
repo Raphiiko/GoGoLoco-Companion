@@ -5,8 +5,6 @@ on:
       - master
       - main
 
-name: CI
-
 jobs:
   build_and_release:
     strategy:
